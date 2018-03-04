@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+{% load  staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>留言板</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form action="/form/" method="post" class="smart-green">
+    <h1>留言信息</h1>
+    <label>
+        <span>姓名 :</span>
+        <input id="name" type="text" name="name" class="error" placeholder="请输入您的姓名"/>
+        <div class="error-msg"></div>
+    </label>
+
+    <label>
+        <span>邮箱 :</span>
+        <input id="email" type="email" value="" name="email" placeholder="请输入您的邮箱地址"/>
+        <div class="error-msg"></div>
+    </label>
+    <label>
+        <span>内容 :</span>
+        <textarea id="message" name="message"  placeholder="请输入您的建议"></textarea>
+        <div class="error-msg"></div>
+    </label>
+    <div class="success-msg"></div>
+    <label>
+        <span>&nbsp;</span>
+        <input type="submit" class="button" value="提交"/>
+    </label>
+    {#避免提交表单时出现CSRF验证失败. 请求被中断.的403错误#}
+    {% csrf_token %}
+</form>
+</body>
+</html>
