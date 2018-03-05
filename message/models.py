@@ -14,3 +14,7 @@ class Message(models.Model):
         verbose_name_plural = '留言板列表'  # 指定模型复数名称
         ordering = ['create_time']  # 按 name 字段排序
         db_table = "meassage"
+
+    # 使在后台显示的对象名称更加友好
+    def __str__(self):
+        return self.name
